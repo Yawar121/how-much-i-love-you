@@ -1,69 +1,80 @@
-
 const card = document.getElementById("card");
 
-document.getElementById("beginBtn").onclick = function () {
+document.getElementById("beginBtn").addEventListener("click", page1);
 
-card.innerHTML = `
-<h1>🥰</h1>
+function page1() {
+  card.innerHTML = `
+    <div class="heart">🥰</div>
 
-<h2>Do you think I care about you?</h2>
+    <h1>Do you think I care about you?</h1>
 
-<p>Choose wisely ❤️</p>
+    <p class="subtitle">Choose wisely 😄</p>
 
-<div class="buttons">
-<button onclick="nextPage()">Yes ❤️</button>
-<button onclick="nextPage()">Absolutely ❤️</button>
-</div>
-`;
-
-};
-
-function nextPage(){
-
-card.innerHTML = `
-<h1>😍</h1>
-
-<h2>How much do you think I love you?</h2>
-
-<p>Move the slider ❤️</p>
-
-<input
-type="range"
-min="0"
-max="100"
-value="100"
-style="width:100%;">
-
-<br><br>
-
-<button onclick="finalPage()">
-Continue ❤️
-</button>
-`;
-
+    <div class="buttons">
+      <button onclick="page2()">Yes ❤️</button>
+      <button onclick="page2()">Absolutely ❤️</button>
+    </div>
+  `;
 }
 
-function finalPage(){
+function page2() {
+  card.innerHTML = `
+    <div class="heart">❤️</div>
 
-card.innerHTML = `
-<h1>❤️</h1>
+    <h1>How much do you think I love you?</h1>
 
-<h2>I Love You More Than Words Can Explain</h2>
+    <p class="subtitle">Move the slider ❤️</p>
 
-<p>
-No matter what happens,<br><br>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="0"
+      id="loveSlider"
+      style="width:100%;margin:25px 0;">
 
-You are my favorite person.<br><br>
+    <h2 id="value">0%</h2>
 
-You make my world brighter.<br><br>
+    <br><br>
 
-I hope this little surprise made you smile. ❤️
-</p>
+    <button onclick="page3()">Continue ❤️</button>
+  `;
 
-<button onclick="location.reload()">
-Start Again ❤️
-</button>
-`;
+  const slider = document.getElementById("loveSlider");
+  const value = document.getElementById("value");
 
+  slider.addEventListener("input", () => {
+    value.innerHTML = slider.value + "%";
+  });
 }
 
+function page3() {
+  card.innerHTML = `
+    <div class="heart">💖</div>
+
+    <h1>I Love You...</h1>
+
+    <p id="typing"></p>
+  `;
+
+  const text =
+    "More than words can explain. More than the stars in the sky. More than every heartbeat. Every day, every moment, I choose you again. ❤️";
+
+  let i = 0;
+
+  const interval = setInterval(() => {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+
+    if (i >= text.length) {
+      clearInterval(interval);
+
+      document.getElementById("typing").innerHTML +=
+        "<br><br><button onclick='restart()'>Replay ❤️</button>";
+    }
+  }, 35);
+}
+
+function restart() {
+  location.reload();
+}
