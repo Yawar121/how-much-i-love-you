@@ -1,23 +1,19 @@
+
 const card = document.getElementById("card");
 
 document.getElementById("beginBtn").onclick = function () {
 
 card.innerHTML = `
-
 <h1>🥰</h1>
 
 <h2>Do you think I care about you?</h2>
 
-<p>Choose wisely 😄</p>
+<p>Choose wisely ❤️</p>
 
 <div class="buttons">
-
 <button onclick="nextPage()">Yes ❤️</button>
-
 <button onclick="nextPage()">Absolutely ❤️</button>
-
 </div>
-
 `;
 
 };
@@ -25,46 +21,49 @@ card.innerHTML = `
 function nextPage(){
 
 card.innerHTML = `
+<h1>😍</h1>
 
-<h1>💖</h1>
+<h2>How much do you think I love you?</h2>
 
-<h2>Aww...</h2>
-
-<p>You haven't seen anything yet.</p>
-
-<button onclick="loveMeter()">Continue ❤️</button>
-
-`;
-
-}
-
-function loveMeter(){
-
-card.innerHTML = `
-
-<h1>❤️</h1>
-
-<h2>How Much Do I Love You?</h2>
-
-<p>Move the slider...</p>
+<p>Move the slider ❤️</p>
 
 <input
 type="range"
 min="0"
 max="100"
-value="0"
-id="slider"
-oninput="updateLove(this.value)"
->
+value="100"
+style="width:100%;">
 
-<h2 id="value">0%</h2>
+<br><br>
 
+<button onclick="finalPage()">
+Continue ❤️
+</button>
 `;
 
 }
 
-function updateLove(v){
+function finalPage(){
 
-document.getElementById("value").innerHTML = v + "%";
+card.innerHTML = `
+<h1>❤️</h1>
+
+<h2>I Love You More Than Words Can Explain</h2>
+
+<p>
+No matter what happens,<br><br>
+
+You are my favorite person.<br><br>
+
+You make my world brighter.<br><br>
+
+I hope this little surprise made you smile. ❤️
+</p>
+
+<button onclick="location.reload()">
+Start Again ❤️
+</button>
+`;
 
 }
+
