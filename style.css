@@ -189,3 +189,36 @@ padding:16px 35px;
 }
 
 }
+.buttons{
+
+display:flex;
+
+gap:15px;
+
+justify-content:center;
+
+margin-top:20px;
+
+}
+
+input[type=range]{
+
+width:90%;
+
+margin:20px auto;
+
+display:block;
+
+}
+
+#value{
+
+font-size:28px;
+
+font-weight:bold;
+
+color:#ff006e;
+
+margin-top:15px;
+
+}
